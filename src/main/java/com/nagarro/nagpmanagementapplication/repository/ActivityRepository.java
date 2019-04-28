@@ -19,13 +19,13 @@ public interface ActivityRepository extends JpaRepository<NagpActivities, String
 	//public List<NagpActivities> findByLevel(@Param("id") int id);
 
 
-	@Query(value = "select * from nagp_activities where batch_id=:batchId and level_id=:levelId",nativeQuery = true)
+	@Query(value = "select * from nagp_activities where batchid=:batchId and levelid=:levelId",nativeQuery = true)
 	public List<NagpActivities> findAllByBatchIdAndLevelId(@Param("batchId") Integer batchId, @Param("levelId") Integer levelId);
 
-	@Query(value = "select * from nagp_activities where batch_id=:batchId",nativeQuery = true)
+	@Query(value = "select * from nagp_activities where batchid=:batchId",nativeQuery = true)
 	public List<NagpActivities> findAllByBatchId(@Param("batchId") Integer batchId);
 
-	@Query(value = "select * from nagp_activities where level_id=:levelId",nativeQuery = true)
+	@Query(value = "select * from nagp_activities where levelid=:levelId",nativeQuery = true)
 	public List<NagpActivities> findAllByLevelId( @Param("levelId") Integer levelId);
 	@Query(value="select * from nagp_activities where activity_name=:name ",nativeQuery = true)
 	public NagpActivities findByName(@Param("name")  String name);
