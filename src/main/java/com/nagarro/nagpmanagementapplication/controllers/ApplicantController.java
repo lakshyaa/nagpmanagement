@@ -43,7 +43,8 @@ public class ApplicantController {
 
 
         System.out.println(applicantService.getApplicants());
-        return  applicantService.getApplicants();
+
+    return  applicantService.getApplicants();
 
     }
     @GetMapping(value="/getAllApplicants/{pageno}")

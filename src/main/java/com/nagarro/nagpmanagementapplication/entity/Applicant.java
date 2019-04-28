@@ -34,9 +34,8 @@ public class Applicant {
 	private long contactNo;
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonBackReference(value="batchno")
-	 @JoinColumn(name = "batchid")
-	//@LazyCollection(LazyCollectionOption.FALSE)
-	private Batch batch; 
+	 @JoinColumn(name = "batch_id")
+	private Batch batch;
 	public List<Comments> getComments() {
 		return comments;
 	}
@@ -51,7 +50,7 @@ public class Applicant {
 	}
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonBackReference(value="levelno")
-	 @JoinColumn(name = "levelid")
+	 @JoinColumn(name = "level_id")
 	private Levels level;
 	//@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="assignee",cascade=CascadeType.ALL)
@@ -120,6 +119,5 @@ public class Applicant {
 	public void setNagpStatus(String nagpStatus) {
 		NagpStatus = nagpStatus;
 	}
-	
 
-}
+	}

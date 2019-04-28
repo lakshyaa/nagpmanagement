@@ -6,15 +6,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import com.nagarro.nagpmanagementapplication.entity.Applicant;
 import com.nagarro.nagpmanagementapplication.repository.ApplicantRepository;
 import com.nagarro.nagpmanagementapplication.service.ApplicantService;
+
+import javax.sql.DataSource;
+
 @Service("applicantService")
 public class ApplicantServiceImpl implements ApplicantService {
 
-
+@Autowired
+	private JdbcTemplate jdbcTemplate;
+@Autowired
+private DataSource dataSource;
 	@Autowired
 	private ApplicantRepository applicantRepository;
 
@@ -26,9 +33,12 @@ public class ApplicantServiceImpl implements ApplicantService {
 	}
 
 	@Override
-	public Iterable<Applicant> getApplicants() {
+	public List getApplicants() {
 		// TODO Auto-generated method stub
-		 return applicantRepository.findAll();
+		String sql="select * from applicant";
+		return jdbcTemplate.queryForList(sql);
+
+		// return applicantRepository.findAll();
 	}
 
 
