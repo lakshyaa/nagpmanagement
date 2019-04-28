@@ -3,6 +3,9 @@ package com.nagarro.nagpmanagementapplication.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +33,7 @@ public class ActivityServiceImpl  implements ActivityService{
 	}
 
 	@Override
-	public List<NagpActivities> getActivities() {
+	public Iterable<NagpActivities> getActivities() {
 
 		
 		return activityRepository.findAll();
@@ -55,6 +58,17 @@ return activityRepository.findAllByBatchIdAndLevelId(batchId,levelId);
 	public NagpActivities findByName(  String name){
 
 		return activityRepository.findByName(name);
+	}
+
+	@Override
+	public Page<NagpActivities> getActivities(int pageno) {
+
+
+		Pageable pageable= PageRequest.of(pageno,1);
+		Page<NagpActivities> nagpActivities=activityRepository.findAll(pageable);
+		return nagpActivities;
+
+
 	}
 
 

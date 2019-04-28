@@ -4,6 +4,7 @@ import com.nagarro.nagpmanagementapplication.entity.NagpActivities;
 import com.nagarro.nagpmanagementapplication.repository.ActivityRepository;
 import com.nagarro.nagpmanagementapplication.service.ActivityService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -39,6 +40,11 @@ public NagpActivities findByName(@RequestParam("name") String name)
 
 
 
+    }
+    @GetMapping("/activities/{pageno}")
+    public Page<NagpActivities>   getActivities(@PathVariable("pageno") int pageno )
+    {
+        return activityService.getActivities(pageno);
     }
 
     }

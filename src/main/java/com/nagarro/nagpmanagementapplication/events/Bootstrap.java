@@ -53,6 +53,15 @@ public class Bootstrap {
         nagpActivities.setMaxQualification(2);
         nagpActivities.setPoints(10);
         activityRepository.save(nagpActivities);
+        NagpActivities nagpActivities1 = new NagpActivities();
+        nagpActivities1.setActivityName("level up");
+        nagpActivities1.setDescription("clearing the level up");
+        nagpActivities1.setBatch(batch);
+        nagpActivities1.setLevel(level);
+        nagpActivities1.setMaxQualification(2);
+        nagpActivities1.setPoints(10);
+        activityRepository.save(nagpActivities1);
+
 
 
         Applicant applicant = new Applicant();
@@ -64,6 +73,38 @@ public class Bootstrap {
         applicant.setEmail("lakshay01@nagarro.com");
         applicant.setNagpStatus("In progresss");
         applicantRepository.save(applicant);
+
+        Applicant applicant1 = new Applicant();
+        applicant1.setBatch(batch);
+        applicant1.setLevel(level);
+        applicant1.setName("shivam");
+        applicant1.setPassword("1234567");
+        applicant1.setContactNo(90340);
+        applicant1.setEmail("shivam@nagarro.com");
+        applicant1.setNagpStatus("In progresss");
+        applicantRepository.save(applicant1);
+
+        Applicant applicant2 = new Applicant();
+        applicant2.setBatch(batch);
+        applicant2.setLevel(level);
+        applicant2.setName("shaantanu");
+        applicant2.setPassword("afae");
+        applicant2.setContactNo(70158);
+        applicant2.setEmail("shaantanu@nagarro.com");
+        applicant2.setNagpStatus("In progresss");
+        applicantRepository.save(applicant2);
+        Applicant applicant3 = new Applicant();
+        applicant3.setBatch(batch);
+        applicant3.setLevel(level);
+        applicant3.setName("shaantanu");
+        applicant3.setPassword("afae");
+        applicant3.setContactNo(70158);
+        applicant3.setEmail("shaantanu@nagarro.com");
+        applicant3.setNagpStatus("In progresss");
+        applicantRepository.save(applicant3);
+
+
+
 
         ApplicantActivityRecord applicantActivityRecord = new ApplicantActivityRecord();
 
