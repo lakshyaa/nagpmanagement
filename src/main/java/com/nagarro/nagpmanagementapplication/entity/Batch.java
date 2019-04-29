@@ -3,6 +3,7 @@ package com.nagarro.nagpmanagementapplication.entity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -21,17 +22,26 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 @Entity
 public class Batch {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
 	private int year;
 	private String technology;
 	private String description;
 	private int qualificationPoints;
 
 	private Date startDate;
-	// @ManyToOne
-	// private Levels level;
+
+	public Batch()
+	{
+
+	}
+	public Batch(String id)
+	{
+		 Logger logger=Logger.getLogger(Batch.class.getName());
+
+		logger.info("id is="+id);
+		this.setId(Integer.parseInt(id));
+	}
 //@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "batch", cascade = CascadeType.ALL)
 //	@JsonManagedReference(value = "batchno")

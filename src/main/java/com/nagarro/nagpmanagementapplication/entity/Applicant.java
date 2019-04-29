@@ -25,7 +25,7 @@ import org.springframework.data.repository.cdi.Eager;
 public class Applicant {
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int applicantId;
 	
 	private String name;

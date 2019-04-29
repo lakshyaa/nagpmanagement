@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 @Entity
 public class Comments {
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	public int getId() {
 		return id;

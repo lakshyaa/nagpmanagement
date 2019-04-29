@@ -1,6 +1,7 @@
 package com.nagarro.nagpmanagementapplication.controllers;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -28,10 +29,12 @@ public class AdminController {
 	
 
 
+	Logger logger = Logger.getLogger(AdminController.class.getName());
 	
 	@GetMapping
 	public Admin adminLogin()
 	{
+
 	Admin a =new Admin();
 	System.out.println("reached in controller");
 	a.setId(1);

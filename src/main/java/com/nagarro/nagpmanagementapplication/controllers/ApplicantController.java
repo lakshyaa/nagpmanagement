@@ -1,6 +1,7 @@
 package com.nagarro.nagpmanagementapplication.controllers;
 
 import com.nagarro.nagpmanagementapplication.entity.Applicant;
+import com.nagarro.nagpmanagementapplication.entity.Levels;
 import com.nagarro.nagpmanagementapplication.entity.NagpActivities;
 import com.nagarro.nagpmanagementapplication.service.ActivityService;
 import com.nagarro.nagpmanagementapplication.service.ApplicantService;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.logging.Logger;
 
 @RestController
 public class ApplicantController {
@@ -19,6 +21,7 @@ public class ApplicantController {
     @Autowired
     private ApplicantService applicantService;
 
+    Logger logger = Logger.getLogger(ApplicantController.class.getName());
 
     @PostConstruct
     public void init(){
@@ -29,8 +32,12 @@ public class ApplicantController {
     @ResponseStatus(HttpStatus.OK)
     public void create(@RequestBody Applicant applicant)
     {
-        System.out.println("reached in controller");
+        //System.out.println("reached in controller");
+        logger.info("adding applicant");
         applicantService.addApplicant(applicant);
+        Levels level=new Levels();
+        applicant.setLevel(level);
+
         System.out.println(applicant.getContactNo()+" "+applicant.getNagpStatus()+" "+applicant.getPassword()+" "+applicant.getLevel());
 
     }
@@ -39,6 +46,9 @@ public class ApplicantController {
     @GetMapping(value="/getAllApplicants")
     public Iterable<Applicant> getApplicants()
     {
+        logger.info("Fetching all applicants");
+
+
         System.out.println("not at the right placereached in activity controller");
 
 

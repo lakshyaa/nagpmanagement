@@ -27,7 +27,7 @@ private LevelService levelService;
     @GetMapping(value= "/getLevel")
     public List<Levels> getLevel(){
 
-        System.out.println("activity name is"+levelService.getLevels().get(0).getNagpActivities());
+      //  System.out.println("activity name is"+levelService.getLevels().get(0).getNagpActivities());
 
         return levelService.getLevels();
 

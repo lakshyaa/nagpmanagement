@@ -25,4 +25,5 @@ public interface ActivityService {
 
 	public Page<NagpActivities> getActivities(int pageno);
 
+
 }
