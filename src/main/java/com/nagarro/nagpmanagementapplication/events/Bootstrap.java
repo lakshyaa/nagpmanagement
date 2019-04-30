@@ -120,6 +120,21 @@ public class Bootstrap {
         applicantActivityRecord.setCompletionDate(null);
 
         applicantActivityRecordRepository.save(applicantActivityRecord);
+        ApplicantActivityRecord applicantActivityRecord1 = new ApplicantActivityRecord();
+
+        applicantActivityRecord1.setActivity(nagpActivities1);
+        applicantActivityRecord1.setLevel(applicant.getLevel());
+        applicantActivityRecord1.setStatus("PLANNED");
+        applicantActivityRecord1.setPercentageScore(60);
+        applicantActivityRecord1.setPoints((60  * nagpActivities.getPoints())/100);
+        applicantActivityRecord1.setAssignee(applicant);
+        applicantActivityRecord1.setDescription("levelup");
+        applicantActivityRecord1.setStartDate(new Date(2019, 01, 01));
+        applicantActivityRecord1.setDoneDate(null);
+        applicantActivityRecord1.setCompletionDate(null);
+        applicantActivityRecordRepository.save(applicantActivityRecord1);
+
+
 
 
     }

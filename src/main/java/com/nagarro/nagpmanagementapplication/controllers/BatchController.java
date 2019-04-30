@@ -19,7 +19,7 @@ private BatchService batchService;
 
 Logger logger= Logger.getLogger(BatchController.class.getName());
 
-    @PostMapping (value="/addbatch")
+    @PostMapping (value="/batch")
     @ResponseStatus(HttpStatus.OK)
     public void createBatch(@RequestBody Batch batch)
     {
@@ -27,14 +27,14 @@ Logger logger= Logger.getLogger(BatchController.class.getName());
         System.out.println("adding batch");
         batchService.addBatch(batch);
     }
-    @RequestMapping(value="/batches")
+    @RequestMapping(value="/batch")
     @ResponseStatus(HttpStatus.OK)
     public List<Batch> getBatch()
     {
 return batchService.getBatches();
     }
 
-@PostMapping(value="/batches")
+@PostMapping(value="/updatebatch")
 @ResponseStatus(HttpStatus.OK)
 public  void updateBatch(@RequestBody Batch batch)
 {logger.info("id is="+batch.getId());

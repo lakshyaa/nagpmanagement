@@ -36,6 +36,8 @@ public class ApplicantController {
         logger.info("adding applicant");
         applicantService.addApplicant(applicant);
         Levels level=new Levels();
+        level.setId(1);
+
         applicant.setLevel(level);
 
         System.out.println(applicant.getContactNo()+" "+applicant.getNagpStatus()+" "+applicant.getPassword()+" "+applicant.getLevel());
@@ -75,7 +77,7 @@ public class ApplicantController {
         return nagpActivities;
     }
 
-    @GetMapping("/applicantsbyname")
+    @PostMapping("/applicantsbyname")
     public List<Applicant>  getApplicantsByName(@RequestParam("name") String name)
     {
 

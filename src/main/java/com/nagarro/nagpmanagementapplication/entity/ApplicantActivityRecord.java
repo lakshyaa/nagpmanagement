@@ -28,10 +28,7 @@ public class ApplicantActivityRecord {
 	private NagpActivities activity;
 	
 	private String status;
-	@ManyToOne
-	@JsonBackReference(value="applicantno")
-	private Applicant applicant;
-	
+
 	public int getId() {
 		return id;
 	}
@@ -55,12 +52,6 @@ public class ApplicantActivityRecord {
 	}
 	public void setStatus(String status) {
 		this.status = status;
-	}
-	public Applicant getApplicant() {
-		return applicant;
-	}
-	public void setApplicant(Applicant applicant) {
-		this.applicant = applicant;
 	}
 	public int getPercentageScore() {
 		return percentageScore;
