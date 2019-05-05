@@ -39,9 +39,9 @@ public class Levels implements Serializable {
 	private List<NagpActivities> nagpActivities=new ArrayList<>();
 	 
 	// @JsonIgnoreProperties("applicantList")
-//	@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy = "level",cascade=CascadeType.ALL)
-//	 @JsonManagedReference(value="levelno")
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JsonManagedReference(value="levelno")
 	private List<Applicant> applicantList=new ArrayList<>();
 
 	@LazyCollection(LazyCollectionOption.FALSE)

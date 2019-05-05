@@ -30,32 +30,40 @@ public class AdminController {
 
 
 	Logger logger = Logger.getLogger(AdminController.class.getName());
-	
-	@GetMapping
-	public Admin adminLogin()
-	{
 
-	Admin a =new Admin();
-	System.out.println("reached in controller");
-	a.setId(1);
-	a.setName("Lakshay");
-	a.setPassword("1234567");
-	adminRepository.save(a);
-	return a;
+	/**
+	 *
+	 * @param admin object of admin get from angular
+	 * @return object of admin if found or return null if not found.
+	 */
+	@PostMapping(value="/admincheck")
+	public Admin adminLogin(@RequestBody Admin admin)
+	{
+		logger.info("inside admin login");
+		logger.info("ADMIN PASSWORD IS"+admin.getPassword());
+
+
+
+	return adminRepository.checkAdmin(admin.getName(),admin.getPassword());
 	
 
 	}
-	
-	
-	@PostMapping
-	@ResponseStatus(HttpStatus.OK)
 
+	/**
+	 *
+	 * @param admin for creating a admin object
+	 */
+	@PostMapping(value="/admin")
+	@ResponseStatus(HttpStatus.OK)
 	public void create(@RequestBody Admin admin)
 	{
 		System.out.println("reached in controller");
 		adminRepository.save(admin);
 		
 	}
+
+
+
 	@GetMapping(value="/addBatch")
 	@ResponseStatus(HttpStatus.OK)
    public void createBatch(@RequestBody Batch batch)

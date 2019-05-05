@@ -17,23 +17,22 @@ import java.util.logging.Logger;
 public class BatchServiceImpl implements BatchService {
     @Autowired
     private BatchRepository batchRepository;
-    Logger logger=Logger.getLogger(Batch.class.getName());
+    Logger logger = Logger.getLogger(Batch.class.getName());
 
 
-    public void addBatch(Batch batch)
-    {
+    public void addBatch(Batch batch) {
 
         batchRepository.save(batch);
     }
-    public List<Batch> getBatches()
-    {
-     logger.info("GETTING Batches");
-     System.out.println(batchRepository.findAll().get(0).getNagpActivities().get(0).getActivityName());
+
+    public List<Batch> getBatches() {
+        logger.info("GETTING Batches");
+        System.out.println(batchRepository.findAll().get(0).getNagpActivities().get(0).getActivityName());
         return batchRepository.findAll();
     }
-    public  void updateBatch(Batch batch)
-    {
-        logger.info(" "+batch.getDescription()+" "+batch.getQualificationPoints()+" "+batch.getStartDate()+" "+batch.getTechnology()+" "+batch.getYear()+" ");
+
+    public void updateBatch(Batch batch) {
+        logger.info(" " + batch.getDescription() + " " + batch.getQualificationPoints() + " " + batch.getStartDate() + " " + batch.getTechnology() + " " + batch.getYear() + " ");
         batchRepository.save(batch);
 
         //batchRepository.updateBatch();
@@ -41,6 +40,29 @@ public class BatchServiceImpl implements BatchService {
 
     }
 
+    public Batch getBatchById(@PathVariable("id") int id) {
+
+
+       return batchRepository.findById(id).get();
+}
+
+    public void updateBatch(int id, Batch newBatch) {
+        // TODO Auto-generated method stub
+
+        logger.info("updating batch in batch service");
+        System.out.println("in update batch");
+        Batch old=batchRepository.getOne(id);
+        if(old!=null)
+        {
+            newBatch.setId(old.getId());
+            newBatch.setStartDate(old.getStartDate());
+            batchRepository.save(newBatch);
+        }
+        else {
+            System.out.println("Error ");
+        }
+
+    }
 
 
 

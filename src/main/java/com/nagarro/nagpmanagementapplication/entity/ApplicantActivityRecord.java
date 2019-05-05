@@ -14,15 +14,30 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+/**
+ * ApplicantActivityRecord  contains info of
+ */
 @Entity
 public class ApplicantActivityRecord {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+
+	int count;
+
 	@ManyToOne
 	@JsonBackReference(value="levelno")
 	private Levels level;
+
 	@ManyToOne
 	@JsonBackReference(value="activityno")
 	private NagpActivities activity;

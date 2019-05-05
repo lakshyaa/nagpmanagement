@@ -15,6 +15,9 @@ public interface BatchService {
 
     public  void updateBatch(Batch batch);
     public List<Batch> getBatches();
+    public Batch getBatchById(@PathVariable("id") int  id);
+    public void updateBatch(int id, Batch newBatch);
 
 
-}
+
+    }

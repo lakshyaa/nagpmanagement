@@ -11,4 +11,8 @@ public interface LevelService {
 
     public List<Levels> getLevels();
 
+    public Levels getLevelById(int id);
+
+    public void updateLevel(int id,Levels levels);
+
 }

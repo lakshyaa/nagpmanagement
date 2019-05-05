@@ -12,5 +12,12 @@ public interface ApplicantActivityRecordService  {
     public List<ApplicantActivityRecord> findAll(@PathVariable("id")int id);
 
     public List<ApplicantActivityRecord> findAll();
+    public String activityCheck(String activity_id, int applicant_id);
+    public  void NextAttemptForActivity(ApplicantActivityRecord applicantActivityRecord);
 
+    public List<ApplicantActivityRecord> getHistoryofActivitiesOfApplicant(int id);
+    public void updateActivityRecord(String status, int recordid);
+    public double getApplicantScoreById(int applicant_id);
+
+    public void updateActivityStatus(double percentage_score, String status, int record_id);
 }

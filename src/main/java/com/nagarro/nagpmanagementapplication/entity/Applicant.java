@@ -20,8 +20,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.data.repository.cdi.Eager;
 
+/**
+ * This class contains info of the applicant.
+ */
 @Entity
-
 public class Applicant {
 	
 	@Id
@@ -36,6 +38,7 @@ public class Applicant {
 	@JsonBackReference(value="batchno")
 	 @JoinColumn(name = "batch_id")
 	private Batch batch;
+
 	public List<Comments> getComments() {
 		return comments;
 	}
@@ -50,12 +53,12 @@ public class Applicant {
 	}
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JsonBackReference(value="levelno")
-	 @JoinColumn(name = "level_id")
+	@JoinColumn(name = "level_id")
 	private Levels level;
+
 	//@LazyCollection(LazyCollectionOption.FALSE)
 	@OneToMany(mappedBy="assignee",cascade=CascadeType.ALL)
 	@JsonManagedReference(value="assigneeno")
-	
 	private List<ApplicantActivityRecord> applicantActivityRecord=new ArrayList<>();
 	private String NagpStatus;
 	//@LazyCollection(LazyCollectionOption.FALSE)
